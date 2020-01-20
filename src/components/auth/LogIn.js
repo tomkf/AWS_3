@@ -20,7 +20,6 @@ class LogIn extends Component {
   };
 
   handleSubmit = async event => {
-    //Prevent page reload
     event.preventDefault();
     
     //Form validation
@@ -31,6 +30,10 @@ class LogIn extends Component {
         errors: { ...this.state.errors, ...error }
       });
     }
+
+
+
+    
     //Integrate Cognito here on valid form submission
   };
 

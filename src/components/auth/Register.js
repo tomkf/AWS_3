@@ -3,7 +3,6 @@ import FormErrors from "../FormErrors";
 import Validate from "../util/Validation";
 
 class Register extends Component { 
-  //state variables for form inputs and errors
     state = {
     username: "",
     email: "",
@@ -25,7 +24,6 @@ class Register extends Component {
   }
 
   handleSubmit = async event => {
-    //Prevent page reload
     event.preventDefault();
 
     //Form validation
@@ -36,7 +34,36 @@ class Register extends Component {
         errors: { ...this.state.errors, ...error }
       });
     }
+
+
+
     //Integrate Cognito here on valid form submission
+    // assign user data to local state
+    const {username, email, password} = this.state
+    try {
+      const signUpResponse = await Auth.signUp({
+        username,
+        password,
+        attributes: {
+          email: email
+        }
+      });
+      console.log(signUpResponse);
+      //redirect to Welcome page if registration is successful
+      //. history allows you to tap into history of your routes
+      this.props.history.push("/welcome");
+    } catch (error){
+      //check if error has a message property, if not add one.
+      let err = null;
+      !error.message ? err= {"message": error } : err = error;
+      //set form error as a cognito error
+      this.setState({
+        errors: {
+          ...this.state.errors,
+          cognito: err
+        }
+      });
+    }
   };
 
   onInputChange = event => {
