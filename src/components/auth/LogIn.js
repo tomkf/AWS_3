@@ -32,7 +32,7 @@ class LogIn extends Component {
       this.setState({
         errors: { ...this.state.errors, ...error }
       });
-    }
+    } else {
 
     //Integrate Cognito here on valid form submission
 
@@ -54,6 +54,7 @@ class LogIn extends Component {
         }
       });
     }
+   }
   };
 
   onInputChange = event => {
