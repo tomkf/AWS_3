@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormErrors from "../FormErrors";
 import Validate from "../util/Validation";
+import {Auth} from 'aws-amplify';
 
 class Register extends Component { 
     state = {

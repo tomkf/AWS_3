@@ -5,14 +5,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-
 //amplify config:
 
 import Amplify from 'aws-amplify';
 import config from './config';
-import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(<App />, document.getElementById('root'));
 
 //config method called from amplyfiy api, and provided with our configure settings for the remote connection 
 Amplify.configure({

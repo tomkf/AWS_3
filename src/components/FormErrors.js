@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function FormErrors(props) {
   if (
     props.formerrors &&
@@ -17,7 +18,7 @@ function FormErrors(props) {
         </div>
       </div>
     );
-  } else if (props.formerrors.cognito && form.formerrors) {
+  } else if (props.formerrors.cognito && props.form.formerrors) {
     return (
     <div className="error container help is-danger">
     <div className="row justify-content-center">
